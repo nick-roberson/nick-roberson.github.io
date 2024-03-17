@@ -46,8 +46,10 @@ function App() {
 
   return (
     <div className="App">
-      <Box m={4}>
-        <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
+
+      <Box m={2}>
+
+        <Box sx={{ bgcolor: 'background.paper'}}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="left" color="text.primary" gutterBottom>
               {personalInfo.name}
@@ -71,7 +73,7 @@ function App() {
 
         <Grid container spacing={2} justifyContent="center">
           
-          <Grid item xs={6}>
+          <Grid item xs={9}>
             <Container maxWidth="sm">
               <Typography component="h2" variant="h4" align="left" color="text.primary" gutterBottom>
                 Projects
@@ -94,7 +96,7 @@ function App() {
             </Container>
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={3}>
 
             <Container maxWidth="sm">
               <Typography component="h2" variant="h4" align="left" color="text.primary" gutterBottom>
