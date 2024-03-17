@@ -6,10 +6,14 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 
 // My imports
 import PersonalInfo from './components/personal_info';
+import PersonalStatement from './components/personal_statement';
 import ProjectCard from './components/project_card';
+import Skill from './components/personal_skill';
+import Skills from './components/personal_skills';
 
 // CSS imports
 import './App.css';
@@ -28,6 +32,16 @@ const personalInfo: PersonalInfo = new PersonalInfo(
   "703-336-9516"
 );
 
+const personalStatement: PersonalStatement = new PersonalStatement(
+  "This is a stand in personal statement, to be replaced with a real one soon enough."
+);
+
+const skills = new Skills([
+  new Skill("Skill 1"),
+  new Skill("Skill 2"),
+  new Skill("Skill 3"),
+]);
+
 function App() {
 
   return (
@@ -37,6 +51,9 @@ function App() {
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="left" color="text.primary" gutterBottom>
               {personalInfo.name}
+            </Typography>
+            <Typography variant="h5" align="left" color="text.secondary" paragraph>
+              {personalStatement.statement}
             </Typography>
             <Typography variant="h5" align="left" color="text.secondary" paragraph>
               Email: {personalInfo.email}
@@ -52,28 +69,46 @@ function App() {
           </Container>
         </Box>
 
-        <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
-          <Container maxWidth="sm">
-            <Typography component="h2" variant="h4" align="left" color="text.primary" gutterBottom>
-              Projects
-            </Typography>
-            {projects.map((project) => (
-              <div>
+        <Grid container spacing={2} justifyContent="center">
+          
+          <Grid item xs={6}>
+            <Container maxWidth="sm">
+              <Typography component="h2" variant="h4" align="left" color="text.primary" gutterBottom>
+                Projects
+              </Typography>
+              {projects.map((project) => (
+                <div>
+                  <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                    {project.title}
+                  </Typography>
+                  <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                    {project.description}
+                  </Typography>
+                  <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                    <Link href={project.link} color="inherit">
+                      {project.link}
+                    </Link>
+                  </Typography>
+                </div>
+              ))}
+            </Container>
+          </Grid>
+
+          <Grid item xs={6}>
+
+            <Container maxWidth="sm">
+              <Typography component="h2" variant="h4" align="left" color="text.primary" gutterBottom>
+                Skills
+              </Typography>
+              {skills.skills.map((skill) => (
                 <Typography variant="h5" align="left" color="text.secondary" paragraph>
-                  {project.title}
+                  {skill.name}
                 </Typography>
-                <Typography variant="h5" align="left" color="text.secondary" paragraph>
-                  {project.description}
-                </Typography>
-                <Typography variant="h5" align="left" color="text.secondary" paragraph>
-                  <Link href={project.link} color="inherit">
-                    {project.link}
-                  </Link>
-                </Typography>
-              </div>
-            ))}
-          </Container>
-        </Box>
+              ))}
+            </Container>
+
+          </Grid>
+        </Grid>
       </Box>
     </div>
   );
