@@ -1,39 +1,18 @@
 import React from 'react';
+
+// Material-UI imports
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
+// My imports
+import PersonalInfo from './components/personal_info';
+import ProjectCard from './components/project_card';
+
+// CSS imports
 import './App.css';
-
-// Define a project card class 
-class ProjectCard {
-
-  title: string;
-  description: string;
-  link: string;
-
-  constructor(title: string, description: string, link: string) {
-    this.title = title;
-    this.description = description;
-    this.link = link;
-  }
-}
-
-// Define a personal information class
-class PersonalInfo {
-
-  name: string;
-  email: string;
-  phone: string;
-
-  constructor(name: string, email: string, phone: string) {
-    this.name = name;
-    this.email = email;
-    this.phone = phone;
-  }
-}
 
 // Create a list of projects
 const projects: ProjectCard[] = [
@@ -53,49 +32,49 @@ function App() {
 
   return (
     <div className="App">
+      <Box m={4}>
+        <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="left" color="text.primary" gutterBottom>
+              {personalInfo.name}
+            </Typography>
+            <Typography variant="h5" align="left" color="text.secondary" paragraph>
+              Email: {personalInfo.email}
+            </Typography>
+            <Typography variant="h5" align="left" color="text.secondary" paragraph>
+              Phone: {personalInfo.phone}
+            </Typography>
+            <Typography variant="h5" align="left" color="text.secondary" paragraph>
+              <Link href="https://www.linkedin.com/in/nicholas-roberson/" color="inherit">
+                LinkedIn
+              </Link>
+            </Typography>
+          </Container>
+        </Box>
 
-      <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
-        <Container maxWidth="sm">
-          <Typography component="h1" variant="h2" align="center" color="text.primary" gutterBottom>
-            {personalInfo.name}
-          </Typography>
-          <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            Email: {personalInfo.email}
-          </Typography>
-          <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            Phone: {personalInfo.phone}
-          </Typography>
-          <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            <Link href="https://www.linkedin.com/in/nicholas-roberson/" color="inherit">
-              LinkedIn
-            </Link>
-          </Typography>
-        </Container>
+        <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
+          <Container maxWidth="sm">
+            <Typography component="h2" variant="h4" align="left" color="text.primary" gutterBottom>
+              Projects
+            </Typography>
+            {projects.map((project) => (
+              <div>
+                <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                  {project.title}
+                </Typography>
+                <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                  {project.description}
+                </Typography>
+                <Typography variant="h5" align="left" color="text.secondary" paragraph>
+                  <Link href={project.link} color="inherit">
+                    {project.link}
+                  </Link>
+                </Typography>
+              </div>
+            ))}
+          </Container>
+        </Box>
       </Box>
-
-      <Box sx={{ bgcolor: 'background.paper', pt: 8, pb: 6 }}>
-        <Container maxWidth="sm">
-          <Typography component="h2" variant="h4" align="center" color="text.primary" gutterBottom>
-            Projects
-          </Typography>
-          {projects.map((project) => (
-            <div>
-              <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                {project.title}
-              </Typography>
-              <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                {project.description}
-              </Typography>
-              <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                <Link href={project.link} color="inherit">
-                  {project.link}
-                </Link>
-              </Typography>
-            </div>
-          ))}
-        </Container>
-      </Box>
-
     </div>
   );
 }
