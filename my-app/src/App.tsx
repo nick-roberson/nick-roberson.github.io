@@ -38,7 +38,7 @@ import { List, ListItem } from "@mui/material";
 
 // Static variables
 const githubLink = "https://github.com/nick-roberson";
-const linkedInLink = "https://www.linkedin.com/in/nick-roberson/";
+const linkedInLink = "https://www.linkedin.com/in/nicholas-roberson/";
 const resumePath = "./components/resume.pdf";
 
 // Work Experience
