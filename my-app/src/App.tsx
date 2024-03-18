@@ -53,7 +53,7 @@ const projects: ProjectCard[] = [
   new ProjectCard(
     "My Places",
     "Personal website to manage places and recipes",
-    "Personal website to manage places and recipes. Built with React, TypeScript, Material-UI, Node.js, FastAPI, and MongoDB. Complete with a front end, back end, and API documentation.",
+    "I created 'places' as a personal project to organize and manage my favorite places to visit and the recipes I love to make at home. It features a web interface for adding, removing, and commenting on places and recipes, supporting a dynamic and personal culinary and travel diary. Integrating MongoDB for storage and requiring a Google Maps/Places API key, this project combines my interests in coding, food, and travel. It's a reflection of my skills in web development and my passion for exploring and cooking. Check it out on GitHub.",
     [
       "Python",
       "React",
@@ -64,13 +64,15 @@ const projects: ProjectCard[] = [
       "OpenAPI",
       "MongoDB",
     ],
+    "https://github.com/nick-roberson/places/blob/main/README.md",
     "https://github.com/nick-roberson/places",
   ),
   new ProjectCard(
     "Fast API Gen",
     "FastAPI Service Generator w/ MongoDB backend.",
-    "Generate a FastAPI service with a MongoDB backend using a Jinja2 templates. Driven by a simple YAML configuration file for the data models that you wish to manage.",
+    "I developed 'fastapi-gen' as a tool to streamline the development of FastAPI services by leveraging Python, MongoDB, and Jinja templating. It allows for the quick generation of service scaffolding, models, and CRUD operations through YAML configurations, aiming to reduce the initial setup time for new projects. This project is especially helpful for those looking to quickly stand up FastAPI applications with MongoDB integration. For more details on how to use it, check out the project on GitHub.",
     ["Python", "FastAPI", "Jinja2", "MongoDB"],
+    "https://github.com/nick-roberson/fastapi-gen/blob/main/README.md",
     "https://github.com/nick-roberson/fastapi-gen",
   ),
 ];
@@ -128,7 +130,7 @@ function renderExperience() {
   return (
     <div>
       {workExperience.map((experience) => (
-        <Accordion key={experience.title} sx={{ marginBottom: 2 }}>
+        <Accordion sx={{ marginBottom: 2, marginTop: 3 }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
@@ -162,7 +164,7 @@ function renderProjects() {
   return (
     <div>
       {projects.map((project) => (
-        <Accordion key={project.title} sx={{ marginBottom: 2 }}>
+        <Accordion key={project.title} sx={{ marginBottom: 2, marginTop: 3 }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
@@ -188,8 +190,10 @@ function renderProjects() {
 
             <AccordionActions>
               <Button size="small" href={project.link}>
-                <GitHubIcon />
-                GitHub Link
+                <GitHubIcon /> Github
+              </Button>
+              <Button size="small" href={project.readme_link}>
+                <GitHubIcon /> Project README.md
               </Button>
             </AccordionActions>
           </AccordionDetails>
@@ -249,11 +253,15 @@ function App() {
 
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={9}>
+            <br />
             <Divider variant="middle"> Experience </Divider>
+            <br />
             {renderExperience()}
-
-            <Divider variant="middle"> Projects </Divider>
+            <br />
+            <Divider variant="middle"> Personal Projects </Divider>
+            <br />
             {renderProjects()}
+            <br />
           </Grid>
 
           <Grid item xs={3}>
