@@ -1,9 +1,9 @@
-import Skill from './personal_skill';
-
 // Define a persona skills class 
 class Skills {
-    skills: Skill[];
-    constructor(skills: Skill[]) {
+    category: string;
+    skills: string[];
+    constructor(category: string, skills: string[]) {
+        this.category = category;
         this.skills = skills;
     }
 }
