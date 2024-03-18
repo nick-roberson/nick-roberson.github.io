@@ -114,7 +114,12 @@ const pythonSkills = new Skills("Python Backend", [
   "Celery",
 ]);
 const javaSkills = new Skills("Java Backend", ["Spring", "Dropwizard", "jOOQ"]);
-const dbSkills = new Skills("Databases", ["RDBMSs", "MySQL", "Postgres", "MongoDB"]);
+const dbSkills = new Skills("Databases", [
+  "RDBMSs",
+  "MySQL",
+  "Postgres",
+  "MongoDB",
+]);
 const toolSkills = new Skills("Tools", ["Pandas", "Jupyter", "DuckDB"]);
 const workflowSkills = new Skills("Workflows", ["Airflow", "Flyte", "Prefect"]);
 const awsSkills = new Skills("AWS", [
@@ -148,11 +153,46 @@ function renderExperience() {
             id="panel1-header"
           >
             <Typography align="left" color="text.secondary">
-              <strong>{experience.title} - {experience.company}</strong>
+              <strong>
+                {experience.title} - {experience.company}
+              </strong>
             </Typography>
           </AccordionSummary>
+
           <AccordionDetails>
             <Typography align="left" paragraph>
+              <strong>Company: </strong>
+              <a href={experience.company_link}>{experience.company}</a>
+            </Typography>
+            <Typography align="left" paragraph>
+              <strong>Languages / Tools </strong>
+              <br />
+            </Typography>
+            <Stack direction="row" spacing={2}>
+              {experience.tooling.map((tool) => (
+                <Button variant="outlined" color="primary">
+                  {tool}
+                </Button>
+              ))}
+            </Stack>
+            <br />
+
+            <Typography align="left" paragraph>
+              <strong>Skills / Experiences</strong>
+              <br />
+            </Typography>
+            <Stack direction="row" spacing={2}>
+              {experience.skills.map((skill) => (
+                <Button variant="outlined" color="primary">
+                  {skill}
+                </Button>
+              ))}
+            </Stack>
+            <br />
+
+            <Typography align="left" paragraph>
+              <strong>Description</strong>
+              <br />
               {experience.description}
             </Typography>
             <Typography align="left" paragraph>
@@ -200,12 +240,16 @@ function renderProjects() {
 
             <br />
             <Typography align="left" paragraph>
-              <strong>Summary:</strong><br />{project.short_description}
+              <strong>Summary:</strong>
+              <br />
+              {project.short_description}
             </Typography>
 
             <br />
             <Typography align="left" paragraph>
-            <strong>Description:</strong><br />{project.description}
+              <strong>Description:</strong>
+              <br />
+              {project.description}
             </Typography>
 
             <br />
@@ -233,22 +277,21 @@ function App() {
     <div className="App">
       <Box m={3}>
         <Box sx={{ bgcolor: "background.paper" }}>
-
           <Typography
-                component="h3"
-                variant="h3"
-                color="text.primary"
-                align="left"
+            component="h3"
+            variant="h3"
+            color="text.primary"
+            align="left"
           >
             Nick Roberson
           </Typography>
           <Typography
-              component="h6"
-              variant="h6"
-              color="text.secondary"
-              align="left"
-            >
-              Senior Software + Data Engineer
+            component="h6"
+            variant="h6"
+            color="text.secondary"
+            align="left"
+          >
+            Senior Software + Data Engineer
           </Typography>
           <Stack direction="row" spacing={2} justifyContent="left">
             <Button
@@ -270,23 +313,28 @@ function App() {
               LinkedIn
             </Button>
           </Stack>
-          <br/>
-          <Divider variant="middle"><strong>About Me</strong></Divider>
-          <br/>
+          <br />
+          <Divider variant="middle">
+            <strong>About Me</strong>
+          </Divider>
+          <br />
           <Typography color="text.secondary" align="left" paragraph>
             {personalStatement.statement}
           </Typography>
-          
         </Box>
 
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={9}>
             <br />
-            <Divider variant="middle"><strong>Work Experience</strong> </Divider>
+            <Divider variant="middle">
+              <strong>Work Experience</strong>{" "}
+            </Divider>
             <br />
             {renderExperience()}
             <br />
-            <Divider variant="middle"><strong>Personal Projects</strong></Divider>
+            <Divider variant="middle">
+              <strong>Personal Projects</strong>
+            </Divider>
             <br />
             {renderProjects()}
             <br />
@@ -295,23 +343,20 @@ function App() {
           <Grid item xs={3}>
             <Container maxWidth="sm">
               <br />
-              <Divider variant="middle"><strong>Skills / Tools</strong></Divider>
+              <Divider variant="middle">
+                <strong>Skills / Tools</strong>
+              </Divider>
               <br />
               {allSkills.map((skill_category) => (
                 <div>
-
-                  <Typography
-                    variant="h6"
-                    align="left"
-                    paragraph
-                  >
+                  <Typography variant="h6" align="left" paragraph>
                     {skill_category.category}
                   </Typography>
 
                   <Grid container>
                     {skill_category.skills.map((skill) => (
                       <List>
-                        <ListItem> 
+                        <ListItem>
                           <Typography align="left" color="text.secondary">
                             {skill}
                           </Typography>
