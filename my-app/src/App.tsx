@@ -34,11 +34,12 @@ import {
 
 // CSS imports
 import "./App.css";
+import { List, ListItem } from "@mui/material";
 
 // Static variables
 const githubLink = "https://github.com/nick-roberson";
 const linkedInLink = "https://www.linkedin.com/in/nick-roberson/";
-const resumePath = "data/resume.pdf";
+const resumePath = "./components/resume.pdf";
 
 // Work Experience
 const workExperience = [
@@ -93,7 +94,7 @@ const pythonSkills = new Skills("Python Backend", [
   "Celery",
 ]);
 const javaSkills = new Skills("Java Backend", ["Spring", "Dropwizard", "jOOQ"]);
-const dbSkills = new Skills("DBs", ["RDBMSs", "MySQL", "Postgres", "MongoDB"]);
+const dbSkills = new Skills("Databases", ["RDBMSs", "MySQL", "Postgres", "MongoDB"]);
 const toolSkills = new Skills("Tools", ["Pandas", "Jupyter", "DuckDB"]);
 const workflowSkills = new Skills("Workflows", ["Airflow", "Flyte", "Prefect"]);
 const awsSkills = new Skills("AWS", [
@@ -106,9 +107,9 @@ const awsSkills = new Skills("AWS", [
   "Lambda",
 ]);
 const allSkills = [
-  warehouseSkills,
   pythonSkills,
   javaSkills,
+  warehouseSkills,
   dbSkills,
   toolSkills,
   workflowSkills,
@@ -229,11 +230,10 @@ function App() {
             <Button startIcon={<LinkedInIcon />} href={linkedInLink}>
               LinkedIn
             </Button>
-            <Button startIcon={<FileDownloadIcon />} href={resumePath} download>
-              Resume
-            </Button>
+            {/* <Button startIcon={<FileDownloadIcon />}>
+              <a href={resumePath} download>Download Resume</a>
+            </Button> */}
           </Stack>
-
           <Divider variant="middle"> About Me </Divider>
 
           <Typography color="text.secondary" align="left" paragraph>
@@ -259,21 +259,24 @@ function App() {
               <Divider variant="middle"> Skills </Divider>
               {allSkills.map((skill_category) => (
                 <div>
+
                   <Typography
                     variant="h6"
                     align="left"
-                    color="text.secondary"
                     paragraph
                   >
                     {skill_category.category}
                   </Typography>
-                  <Grid container spacing={1}>
+
+                  <Grid container>
                     {skill_category.skills.map((skill) => (
-                      <Grid item xs={5}>
-                        <Button variant="outlined" color="primary">
-                          {skill}
-                        </Button>
-                      </Grid>
+                      <List>
+                        <ListItem> 
+                          <Typography align="left" color="text.secondary">
+                            {skill}
+                          </Typography>
+                        </ListItem>
+                      </List>
                     ))}
                   </Grid>
                 </div>
