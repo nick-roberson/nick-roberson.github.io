@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
@@ -52,26 +51,17 @@ const workExperience = [
 const projects: ProjectCard[] = [
   new ProjectCard(
     "My Places",
-    "Personal website to manage places and recipes",
+    "Personal web app to organize and manage favorite places and recipes built with FastAPI, React, and MongoDB",
     "I created 'places' as a personal project to organize and manage my favorite places to visit and the recipes I love to make at home. It features a web interface for adding, removing, and commenting on places and recipes, supporting a dynamic and personal culinary and travel diary. Integrating MongoDB for storage and requiring a Google Maps/Places API key, this project combines my interests in coding, food, and travel. It's a reflection of my skills in web development and my passion for exploring and cooking. Check it out on GitHub.",
-    [
-      "Python",
-      "React",
-      "TypeScript",
-      "Material-UI",
-      "Node.js",
-      "FastAPI",
-      "OpenAPI",
-      "MongoDB",
-    ],
+    ["Python", "React", "TypeScript", "FastAPI", "OpenAPI", "MongoDB"],
     "https://github.com/nick-roberson/places/blob/main/README.md",
     "https://github.com/nick-roberson/places",
   ),
   new ProjectCard(
     "Fast API Gen",
-    "FastAPI Service Generator w/ MongoDB backend.",
+    "CLI Tool to generate FastAPI services w/ MongoDB Backend using OpenAPI and Jinja2",
     "I developed 'fastapi-gen' as a tool to streamline the development of FastAPI services by leveraging Python, MongoDB, and Jinja templating. It allows for the quick generation of service scaffolding, models, and CRUD operations through YAML configurations, aiming to reduce the initial setup time for new projects. This project is especially helpful for those looking to quickly stand up FastAPI applications with MongoDB integration. For more details on how to use it, check out the project on GitHub.",
-    ["Python", "FastAPI", "Jinja2", "MongoDB"],
+    ["Python", "FastAPI", "OpenAPI", "MongoDB", "Jinja2"],
     "https://github.com/nick-roberson/fastapi-gen/blob/main/README.md",
     "https://github.com/nick-roberson/fastapi-gen",
   ),
