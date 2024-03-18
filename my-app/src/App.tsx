@@ -52,16 +52,23 @@ const workExperience = [
 const projects: ProjectCard[] = [
   new ProjectCard(
     "My Places",
-    "Personal web app to organize and manage favorite places and recipes built with FastAPI, React, and MongoDB",
-    "I created 'places' as a personal project to organize and manage my favorite places to visit and the recipes I love to make at home. It features a web interface for adding, removing, and commenting on places and recipes, supporting a dynamic and personal culinary and travel diary. Integrating MongoDB for storage and requiring a Google Maps/Places API key, this project combines my interests in coding, food, and travel. It's a reflection of my skills in web development and my passion for exploring and cooking. Check it out on GitHub.",
+    "Personal web app to organize and manage favorite places and recipes built with Python, FastAPI, React, Typescript, and MongoDB",
+    `I created 'places' as a personal project to organize and manage my favorite places to visit and the recipes
+     I love to make at home. It features a web interface for adding, removing, and commenting on places and recipes, 
+     supporting a dynamic and personal culinary and travel diary. Integrating MongoDB for storage and requiring 
+     a Google Maps/Places API key, this project combines my interests in coding, food, and travel. It's a reflection 
+     of my skills in web development and my passion for exploring and cooking.`,
     ["Python", "React", "TypeScript", "FastAPI", "OpenAPI", "MongoDB"],
     "https://github.com/nick-roberson/places/blob/main/README.md",
     "https://github.com/nick-roberson/places",
   ),
   new ProjectCard(
-    "Fast API Gen",
+    "Fast API Service Generator",
     "CLI Tool to generate FastAPI services w/ MongoDB Backend using OpenAPI and Jinja2",
-    "I developed 'fastapi-gen' as a tool to streamline the development of FastAPI services by leveraging Python, MongoDB, and Jinja templating. It allows for the quick generation of service scaffolding, models, and CRUD operations through YAML configurations, aiming to reduce the initial setup time for new projects. This project is especially helpful for those looking to quickly stand up FastAPI applications with MongoDB integration. For more details on how to use it, check out the project on GitHub.",
+    `I developed 'fastapi-gen' as a tool to streamline the development of FastAPI services by leveraging Python, 
+    MongoDB, and Jinja templating. It allows for the quick generation of service scaffolding, models, and CRUD 
+    operations through YAML configurations, aiming to reduce the initial setup time for new projects. This project 
+    is especially helpful for those looking to quickly stand up FastAPI applications with MongoDB integration.`,
     ["Python", "FastAPI", "OpenAPI", "MongoDB", "Jinja2"],
     "https://github.com/nick-roberson/fastapi-gen/blob/main/README.md",
     "https://github.com/nick-roberson/fastapi-gen",
@@ -76,9 +83,22 @@ const personalInfo: PersonalInfo = new PersonalInfo(
 );
 
 // Create a personal statement object
-const personalStatement: PersonalStatement = new PersonalStatement(
-  "As a Senior Engineer with over five years of experience, I specialize in back-end development, data engineering, and project management. I have led the development of innovative solutions at both of my previous companies, focusing on clear requirements and a user-centered approach. Notable projects include a low-latency, high-availability tracking and automation platform for indoor farming at Plenty, and cost estimation software for Kubernetes at Atomwise. Furthermore, I have proven expertise in managing large-scale data warehouses, effectively meeting the diverse needs of internal teams at both organizations. Overall, I excel in backend service/API development and data engineering, coupled with a strong ability to solve complex problems. My commitment to fostering team collaboration has been instrumental in delivering top-notch solutions.",
-);
+const description = `
+As a Senior Engineer with over five years of experience, I specialize in back-end 
+development, data engineering, and project management. 
+
+I have led the development of innovative 
+solutions at both of my previous companies, focusing on clear requirements and a user-centered 
+approach. Notable projects include a low-latency, high-availability tracking and automation 
+platform for indoor farming at Plenty, and cost estimation software for Kubernetes at Atomwise. 
+Furthermore, I have proven expertise in managing large-scale data warehouses, effectively meeting 
+the diverse needs of internal teams at both organizations. 
+
+Overall, I excel in backend service/API 
+development and data engineering, coupled with a strong ability to solve complex problems. My 
+commitment to fostering team collaboration has been instrumental in delivering top-notch solutions.
+`;
+const personalStatement: PersonalStatement = new PersonalStatement(description);
 
 // Define a list of skills
 const warehouseSkills = new Skills("Data Warehouse", [
@@ -128,8 +148,7 @@ function renderExperience() {
             id="panel1-header"
           >
             <Typography align="left" color="text.secondary">
-              {experience.title} - {experience.company} :{" "}
-              {experience.start_date} - {experience.end_date}
+              <strong>{experience.title} - {experience.company}</strong>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -162,11 +181,15 @@ function renderProjects() {
             id="panel1-header"
           >
             <Typography align="left" color="text.secondary">
-              {project.title} - {project.short_description}
+              <strong>{project.title}</strong>
             </Typography>
           </AccordionSummary>
 
           <AccordionDetails>
+            <Typography align="left" paragraph>
+              <strong>Tooling / Components</strong>
+            </Typography>
+
             <Stack direction="row" spacing={2}>
               {project.components.map((component) => (
                 <Button variant="outlined" color="primary">
@@ -174,9 +197,20 @@ function renderProjects() {
                 </Button>
               ))}
             </Stack>
+
             <br />
             <Typography align="left" paragraph>
-              {project.description}
+              <strong>Summary:</strong><br />{project.short_description}
+            </Typography>
+
+            <br />
+            <Typography align="left" paragraph>
+            <strong>Description:</strong><br />{project.description}
+            </Typography>
+
+            <br />
+            <Typography align="left" paragraph>
+              Check out the project on GitHub using the links below!
             </Typography>
 
             <AccordionActions>
@@ -199,19 +233,24 @@ function App() {
     <div className="App">
       <Box m={3}>
         <Box sx={{ bgcolor: "background.paper" }}>
+
           <Typography
-            component="h3"
-            variant="h3"
-            align="left"
-            color="text.primary"
-            gutterBottom
+                component="h3"
+                variant="h3"
+                color="text.primary"
+                align="left"
           >
-            {personalInfo.name}
+            Nick Roberson
           </Typography>
-
-          <Divider variant="middle"> Links </Divider>
-
-          <Stack direction="row" spacing={2}>
+          <Typography
+              component="h6"
+              variant="h6"
+              color="text.secondary"
+              align="left"
+            >
+              Senior Software + Data Engineer
+          </Typography>
+          <Stack direction="row" spacing={2} justifyContent="left">
             <Button
               startIcon={<AlternateEmailIcon />}
               href={"mailto:" + personalInfo.email}
@@ -230,25 +269,24 @@ function App() {
             <Button startIcon={<LinkedInIcon />} href={linkedInLink}>
               LinkedIn
             </Button>
-            {/* <Button startIcon={<FileDownloadIcon />}>
-              <a href={resumePath} download>Download Resume</a>
-            </Button> */}
           </Stack>
-          <Divider variant="middle"> About Me </Divider>
-
+          <br/>
+          <Divider variant="middle"><strong>About Me</strong></Divider>
+          <br/>
           <Typography color="text.secondary" align="left" paragraph>
             {personalStatement.statement}
           </Typography>
+          
         </Box>
 
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={9}>
             <br />
-            <Divider variant="middle"> Experience </Divider>
+            <Divider variant="middle"><strong>Work Experience</strong> </Divider>
             <br />
             {renderExperience()}
             <br />
-            <Divider variant="middle"> Personal Projects </Divider>
+            <Divider variant="middle"><strong>Personal Projects</strong></Divider>
             <br />
             {renderProjects()}
             <br />
@@ -256,7 +294,9 @@ function App() {
 
           <Grid item xs={3}>
             <Container maxWidth="sm">
-              <Divider variant="middle"> Skills </Divider>
+              <br />
+              <Divider variant="middle"><strong>Skills / Tools</strong></Divider>
+              <br />
               {allSkills.map((skill_category) => (
                 <div>
 
