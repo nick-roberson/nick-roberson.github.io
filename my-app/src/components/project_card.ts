@@ -1,15 +1,24 @@
-// Define a project card class 
+// Define a project card class
 class ProjectCard {
+  title: string;
+  short_description: string;
+  description: string;
+  components: string[];
+  link: string;
 
-    title: string;
-    description: string;
-    link: string;
-  
-    constructor(title: string, description: string, link: string) {
-      this.title = title;
-      this.description = description;
-      this.link = link;
-    }
+  constructor(
+    title: string,
+    short_description: string,
+    description: string,
+    components: string[],
+    link: string,
+  ) {
+    this.title = title;
+    this.short_description = short_description;
+    this.description = description;
+    this.components = components;
+    this.link = link;
+  }
 }
 
 export default ProjectCard;

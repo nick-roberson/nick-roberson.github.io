@@ -7,22 +7,72 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Divider from "@mui/material/Divider";
+import Accordion from "@mui/material/Accordion";
+import AccordionActions from "@mui/material/AccordionActions";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+// Icons
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 // My imports
 import PersonalInfo from "./components/personal_info";
 import PersonalStatement from "./components/personal_statement";
 import ProjectCard from "./components/project_card";
-import Skill from "./components/personal_skill";
 import Skills from "./components/personal_skills";
+import {
+  atomwiseExperience,
+  plentyEngineerExperience,
+  plentySeniorExperience,
+} from "./components/experience";
 
 // CSS imports
 import "./App.css";
 
+// Static variables
+const githubLink = "https://github.com/nick-roberson";
+const linkedInLink = "https://www.linkedin.com/in/nick-roberson/";
+const resumePath = "data/resume.pdf";
+
+// Work Experience
+const workExperience = [
+  atomwiseExperience,
+  plentySeniorExperience,
+  plentyEngineerExperience,
+];
+
 // Create a list of projects
 const projects: ProjectCard[] = [
-  new ProjectCard("Project 1", "Description 1", "Link 1"),
-  new ProjectCard("Project 2", "Description 2", "Link 2"),
-  new ProjectCard("Project 3", "Description 3", "Link 3"),
+  new ProjectCard(
+    "My Places",
+    "Personal website to manage places and recipes",
+    "Personal website to manage places and recipes. Built with React, TypeScript, Material-UI, Node.js, FastAPI, and MongoDB. Complete with a front end, back end, and API documentation.",
+    [
+      "Python",
+      "React",
+      "TypeScript",
+      "Material-UI",
+      "Node.js",
+      "FastAPI",
+      "OpenAPI",
+      "MongoDB",
+    ],
+    "https://github.com/nick-roberson/places",
+  ),
+  new ProjectCard(
+    "Fast API Gen",
+    "FastAPI Service Generator w/ MongoDB backend.",
+    "Generate a FastAPI service with a MongoDB backend using a Jinja2 templates. Driven by a simple YAML configuration file for the data models that you wish to manage.",
+    ["Python", "FastAPI", "Jinja2", "MongoDB"],
+    "https://github.com/nick-roberson/fastapi-gen",
+  ),
 ];
 
 // Create a personal information object
@@ -73,97 +123,161 @@ const allSkills = [
   awsSkills,
 ];
 
+// Function to render the experience section
+function renderExperience() {
+  return (
+    <div>
+      {workExperience.map((experience) => (
+        <Accordion key={experience.title} sx={{ marginBottom: 2 }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography align="left" color="text.secondary">
+              {experience.title} - {experience.company} :{" "}
+              {experience.start_date} - {experience.end_date}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography align="left" paragraph>
+              {experience.description}
+            </Typography>
+            <Typography align="left" paragraph>
+              <ul>
+                {experience.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+    </div>
+  );
+}
+
+// Function to render the projects section
+function renderProjects() {
+  return (
+    <div>
+      {projects.map((project) => (
+        <Accordion key={project.title} sx={{ marginBottom: 2 }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography align="left" color="text.secondary">
+              {project.title} - {project.short_description}
+            </Typography>
+          </AccordionSummary>
+
+          <AccordionDetails>
+            <Stack direction="row" spacing={2}>
+              {project.components.map((component) => (
+                <Button variant="outlined" color="primary">
+                  {component}
+                </Button>
+              ))}
+            </Stack>
+            <br />
+            <Typography align="left" paragraph>
+              {project.description}
+            </Typography>
+
+            <AccordionActions>
+              <Button size="small" href={project.link}>
+                <GitHubIcon />
+                GitHub Link
+              </Button>
+            </AccordionActions>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="App">
-      <Box m={2}>
+      <Box m={3}>
         <Box sx={{ bgcolor: "background.paper" }}>
-          <Container>
-            <Typography
-              component="h1"
-              variant="h2"
-              color="text.primary"
-              gutterBottom
+          <Typography
+            component="h3"
+            variant="h3"
+            align="left"
+            color="text.primary"
+            gutterBottom
+          >
+            {personalInfo.name}
+          </Typography>
+
+          <Divider variant="middle"> Links </Divider>
+
+          <Stack direction="row" spacing={2}>
+            <Button
+              startIcon={<AlternateEmailIcon />}
+              href={"mailto:" + personalInfo.email}
             >
-              {personalInfo.name}
-            </Typography>
-            <Typography variant="h5" color="text.secondary" paragraph>
-              {personalStatement.statement}
-            </Typography>
-            <Typography variant="h5" color="text.secondary" paragraph>
-              Email: {personalInfo.email}
-            </Typography>
-            <Typography variant="h5" color="text.secondary" paragraph>
-              Phone: {personalInfo.phone}
-            </Typography>
-            <Typography variant="h5" color="text.secondary" paragraph>
-              <Link
-                href="https://www.linkedin.com/in/nicholas-roberson/"
-                color="inherit"
-              >
-                LinkedIn
-              </Link>
-            </Typography>
-          </Container>
+              Email Me
+            </Button>
+            <Button
+              startIcon={<ContactPhoneIcon />}
+              href={"tel:" + personalInfo.phone}
+            >
+              Call Me
+            </Button>
+            <Button startIcon={<GitHubIcon />} href={githubLink}>
+              GitHub
+            </Button>
+            <Button startIcon={<LinkedInIcon />} href={linkedInLink}>
+              LinkedIn
+            </Button>
+            <Button startIcon={<FileDownloadIcon />} href={resumePath} download>
+              Resume
+            </Button>
+          </Stack>
+
+          <Divider variant="middle"> About Me </Divider>
+
+          <Typography color="text.secondary" align="left" paragraph>
+            {personalStatement.statement}
+          </Typography>
         </Box>
 
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={9}>
-            <Container maxWidth="sm">
-              <Typography
-                component="h2"
-                variant="h4"
-                color="text.primary"
-                gutterBottom
-              >
-                Projects
-              </Typography>
-              {projects.map((project) => (
-                <div>
-                  <Typography variant="h5" color="text.secondary" paragraph>
-                    {project.title}
-                  </Typography>
-                  <Typography variant="h5" color="text.secondary" paragraph>
-                    {project.description}
-                  </Typography>
-                  <Typography variant="h5" color="text.secondary" paragraph>
-                    <Link href={project.link} color="inherit">
-                      {project.link}
-                    </Link>
-                  </Typography>
-                </div>
-              ))}
-            </Container>
+            <Divider variant="middle"> Experience </Divider>
+            {renderExperience()}
+
+            <Divider variant="middle"> Projects </Divider>
+            {renderProjects()}
           </Grid>
 
           <Grid item xs={3}>
             <Container maxWidth="sm">
-              <Typography
-                component="h2"
-                variant="h4"
-                color="text.primary"
-                gutterBottom
-              >
-                Skills
-              </Typography>
+              <Divider variant="middle"> Skills </Divider>
               {allSkills.map((skill_category) => (
                 <div>
-                  <Typography variant="h4" color="text.secondary" paragraph>
+                  <Typography
+                    variant="h6"
+                    align="left"
+                    color="text.secondary"
+                    paragraph
+                  >
                     {skill_category.category}
                   </Typography>
-                  <ul>
-                    {skill_category.skills.map((s) => (
-                      <li>
-                        <Typography
-                          variant="h5"
-                          color="text.secondary"
-                          paragraph
-                        >
-                          {s}
-                        </Typography>
-                      </li>
+                  <Grid container spacing={1}>
+                    {skill_category.skills.map((skill) => (
+                      <Grid item xs={5}>
+                        <Button variant="outlined" color="primary">
+                          {skill}
+                        </Button>
+                      </Grid>
                     ))}
-                  </ul>
+                  </Grid>
                 </div>
               ))}
             </Container>
