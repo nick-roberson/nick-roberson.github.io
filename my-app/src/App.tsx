@@ -344,7 +344,7 @@ function App() {
                 color="text.primary"
                 align="left"
               >
-                Nick Roberson
+                Nicholas (Nick) Roberson
               </Typography>
               <Typography
                 component="h6"
