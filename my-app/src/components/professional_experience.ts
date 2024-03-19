@@ -1,8 +1,10 @@
 // Create a class for Professional Experience
 class ProfessionalExperience {
   title: string;
+  yoe: string;
   company: string;
   company_link: string;
+
   start_date: string;
   end_date: string;
 
@@ -15,6 +17,7 @@ class ProfessionalExperience {
 
   constructor(
     title: string,
+    yoe: string,
     company: string,
     company_link: string,
     start_date: string,
@@ -25,6 +28,7 @@ class ProfessionalExperience {
     items: string[],
   ) {
     this.title = title;
+    this.yoe = yoe;
     this.company = company;
     this.company_link = company_link;
     this.start_date = start_date;

@@ -3,6 +3,7 @@ import ProfessionalExperience from "./professional_experience";
 // Atomwise Experience
 const atomwiseExperience = new ProfessionalExperience(
   "Senior Software Engineer",
+  "2.5 YoE",
   "Atomwise",
   "https://www.atomwise.com/",
   "Dec 2021",
@@ -47,6 +48,7 @@ const atomwiseExperience = new ProfessionalExperience(
 // Plenty Experience (Senior Software Engineer)
 const plentySeniorExperience = new ProfessionalExperience(
   "Senior Software Engineer",
+  "2 YoE",
   "Plenty",
   "https://www.plenty.ag/",
   "Aug 2019",
@@ -86,6 +88,7 @@ const plentySeniorExperience = new ProfessionalExperience(
 // Plenty Experience (Software Engineer)
 const plentyEngineerExperience = new ProfessionalExperience(
   "Software Engineer",
+  "1 YoE",
   "Plenty",
   "https://www.plenty.ag/",
   "Jul 2018",

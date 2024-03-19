@@ -51,7 +51,7 @@ const workExperience = [
 // Create a list of projects
 const projects: ProjectCard[] = [
   new ProjectCard(
-    "My Places",
+    "My Places Service - Manage recipes and places you love!",
     "Personal web app to organize and manage favorite places and recipes built with Python, FastAPI, React, Typescript, and MongoDB",
     `I created 'places' as a personal project to organize and manage my favorite places to visit and the recipes
      I love to make at home. It features a web interface for adding, removing, and commenting on places and recipes, 
@@ -63,7 +63,7 @@ const projects: ProjectCard[] = [
     "https://github.com/nick-roberson/places",
   ),
   new ProjectCard(
-    "Fast API Service Generator",
+    "Fast API Service Generator - Create FastAPI services w/ MongoDB backend using a CLI!",
     "CLI Tool to generate FastAPI services w/ MongoDB Backend using OpenAPI and Jinja2",
     `I developed 'fastapi-gen' as a tool to streamline the development of FastAPI services by leveraging Python, 
     MongoDB, and Jinja templating. It allows for the quick generation of service scaffolding, models, and CRUD 
@@ -169,7 +169,7 @@ function renderExperience() {
           >
             <Typography align="left" color="text.secondary">
               <strong>
-                {experience.title} - {experience.company}
+                {experience.title} - {experience.company} - {experience.yoe}
               </strong>
             </Typography>
           </AccordionSummary>
