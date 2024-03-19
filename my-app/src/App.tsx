@@ -101,8 +101,9 @@ const description = [
   `I also developed 'fastapi-gen', a CLI tool to generate
   FastAPI services with a MongoDB backend using OpenAPI and Jinja2. This tool was developed to streamline
   the development of FastAPI services by leveraging Python, MongoDB, and Jinja templating. It allows for
-  the quick generation of service scaffolding, models, and CRUD operations through YAML configurations,
-  which aims to reduce the initial setup time for new projects (but mostly POC implementations).`,
+  the quick generation of service scaffolding, models, and CRUD+ operations through YAML configurations,
+  which aims to reduce the initial setup time for new projects (but mostly POC implementations). Both are 
+  still a work in progress, but I'm excited to continue to develop and improve them.`,
   `I am always looking for new opportunities to grow and learn,
   and I am excited to bring my expertise to a new team.`,
 ];
@@ -192,7 +193,7 @@ function renderExperience() {
               <strong>Skills / Experiences</strong>
               <br />
             </Typography>
-            <Stack direction="row">
+            <Stack direction="row" spacing={2}>
               {experience.skills.map((skill) => (
                 <Button variant="outlined" color="primary">
                   {skill}

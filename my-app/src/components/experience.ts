@@ -10,11 +10,11 @@ const atomwiseExperience = new ProfessionalExperience(
   "Implemented Atomwise's Data Warehouse Infrastructure using DBT, Redshift, and Flyte, as well as played a key role in the development and improvement of internal Microservices and AI/ML pipelines.",
   // Tooling
   [
+    "Python",
     "DBT",
     "Redshift",
     "Flyte",
     "Kubernetes",
-    "Python",
     "Pandas",
     "Jupyter",
     "Flyte",
@@ -54,12 +54,13 @@ const plentySeniorExperience = new ProfessionalExperience(
   "Key developer and project manager for Plenty's indoor farm automation platform, as well as led the development and integration of low-latency tracking software for Bay Area factory operations.",
   // Tooling
   [
+    "Python",
+    "Java",
     "Akka",
     "Stitch",
     "DBT",
     "Snowflake",
     "Sisense",
-    "Python",
     "Flask",
     "Postgres",
     "Docker",
@@ -68,7 +69,9 @@ const plentySeniorExperience = new ProfessionalExperience(
   // Skills
   [
     "Akka Actor Model",
-    "Low-latency Tracking Software",
+    "Traceability Software",
+    "Orchestration Software",
+    "Collaboration",
     "Data Warehouse",
     "Project Management",
   ],
@@ -89,7 +92,7 @@ const plentyEngineerExperience = new ProfessionalExperience(
   "Aug 2019",
   "As an early team member, designed and developed core Java and Python Microservices and led Plenty's Corporate Social Responsibility (CSR) team.",
   // Tooling
-  ["Java", "Python", "Spring", "Docker", "Kubernetes", "Flask", "Postgres"],
+  ["Python", "Java", "Dropwizard", "Docker", "Kubernetes", "Flask", "Postgres"],
   // Skills
   [
     "Microservices",
