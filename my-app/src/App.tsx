@@ -106,6 +106,9 @@ const description = [
   still a work in progress, but I'm excited to continue to develop and improve them.`,
   `I am always looking for new opportunities to grow and learn,
   and I am excited to bring my expertise to a new team.`,
+  `If you would like to reach out to me, please feel free to email me at nicholas.roberson.95@gmail.com, or
+  call me at 703-336-9516. I am also available on LinkedIn and GitHub, and I can send on my resume 
+  on request! Look forward to connecting with you soon.`,
 ];
 const personalStatement = new PersonalStatement(description);
 
