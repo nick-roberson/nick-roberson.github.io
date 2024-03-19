@@ -83,29 +83,33 @@ const personalInfo: PersonalInfo = new PersonalInfo(
 );
 
 // Create a personal statement object
-const description = `
-As a Senior Engineer with over five years of experience, I specialize in back-end 
-development, data engineering, and project management. 
-
-I have led the development of innovative 
-solutions at both of my previous companies, focusing on clear requirements and a user-centered 
-approach. Notable projects include a low-latency, high-availability tracking and automation 
-platform for indoor farming at Plenty, and cost estimation software for Kubernetes at Atomwise. 
-Furthermore, I have proven expertise in managing large-scale data warehouses, effectively meeting 
-the diverse needs of internal teams at both organizations. 
-
-Overall, I excel in backend service/API 
-development and data engineering, coupled with a strong ability to solve complex problems. My 
-commitment to fostering team collaboration has been instrumental in delivering top-notch solutions.
-`;
-const personalStatement: PersonalStatement = new PersonalStatement(description);
+const description = [
+  `As a Senior Engineer with over five years of experience, I specialize in back-end 
+  development, data engineering, and project management.`,
+  `I have led the development of innovative 
+  solutions at both of my previous companies, focusing on clear requirements and a user-centered 
+  approach. Notable projects include a low-latency, high-availability tracking and automation 
+  platform for indoor farming at Plenty, and cost estimation software for Kubernetes at Atomwise. 
+  Furthermore, I have proven expertise in managing large-scale data warehouses, effectively meeting 
+  the diverse needs of internal teams at both organizations.`,
+  `Overall, I excel in backend service/API 
+  development and data engineering, coupled with a strong ability to solve complex problems. My 
+  commitment to fostering team collaboration has been instrumental in delivering top-notch solutions.`,
+  `On the side I enjoy working on personal projects, such as 'My Places', a web app to organize and
+  manage favorite places and recipes. This was born our of a bit of frustration with existing tools
+  like Google Maps and Yelp, and a desire to have a more personal and customizable way to keep track
+  of places I've been and recipes I've enjoyed.`,
+  `I also developed 'fastapi-gen', a CLI tool to generate
+  FastAPI services with a MongoDB backend using OpenAPI and Jinja2. This tool was developed to streamline
+  the development of FastAPI services by leveraging Python, MongoDB, and Jinja templating. It allows for
+  the quick generation of service scaffolding, models, and CRUD operations through YAML configurations,
+  which aims to reduce the initial setup time for new projects (but mostly POC implementations).`,
+  `I am always looking for new opportunities to grow and learn,
+  and I am excited to bring my expertise to a new team.`,
+];
+const personalStatement = new PersonalStatement(description);
 
 // Define a list of skills
-const warehouseSkills = new Skills("Data Warehouse", [
-  "Snowflake",
-  "Redshift",
-  "DBT",
-]);
 const pythonSkills = new Skills("Python Backend", [
   "Flask",
   "FastAPI",
@@ -114,22 +118,30 @@ const pythonSkills = new Skills("Python Backend", [
   "Celery",
 ]);
 const javaSkills = new Skills("Java Backend", ["Spring", "Dropwizard", "jOOQ"]);
-const dbSkills = new Skills("Databases", [
-  "RDBMSs",
+const warehouseSkills = new Skills("Data Warehouse", [
+  "Snowflake",
+  "Redshift",
+  "DBT",
+]);
+const dbSkills = new Skills("Database / Datastores", [
+  "RDBMS",
   "MySQL",
   "Postgres",
   "MongoDB",
+  "DynamoDB",
+  "Athena",
+  "S3",
+  "RDS",
 ]);
 const toolSkills = new Skills("Tools", ["Pandas", "Jupyter", "DuckDB"]);
 const workflowSkills = new Skills("Workflows", ["Airflow", "Flyte", "Prefect"]);
-const awsSkills = new Skills("AWS", [
+const awsSkills = new Skills("Other AWS", [
   "EC2",
-  "S3",
-  "Athena",
   "Glue",
-  "RDS",
   "SQS",
   "Lambda",
+  "CloudWatch",
+  "API Gateway",
 ]);
 const allSkills = [
   pythonSkills,
@@ -181,7 +193,7 @@ function renderExperience() {
               <strong>Skills / Experiences</strong>
               <br />
             </Typography>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row">
               {experience.skills.map((skill) => (
                 <Button variant="outlined" color="primary">
                   {skill}
@@ -318,9 +330,11 @@ function App() {
             <strong>About Me</strong>
           </Divider>
           <br />
-          <Typography color="text.secondary" align="left" paragraph>
-            {personalStatement.statement}
-          </Typography>
+          {personalStatement.statement.map((paragraph) => (
+            <Typography align="left" paragraph>
+              {paragraph}
+            </Typography>
+          ))}
         </Box>
 
         <Grid container spacing={2} justifyContent="center">
@@ -341,7 +355,7 @@ function App() {
           </Grid>
 
           <Grid item xs={3}>
-            <Container maxWidth="sm">
+            <Container>
               <br />
               <Divider variant="middle">
                 <strong>Skills / Tools</strong>
@@ -349,15 +363,15 @@ function App() {
               <br />
               {allSkills.map((skill_category) => (
                 <div>
-                  <Typography variant="h6" align="left" paragraph>
+                  <Typography variant="h6" align="left">
                     {skill_category.category}
                   </Typography>
 
                   <Grid container>
                     {skill_category.skills.map((skill) => (
                       <List>
-                        <ListItem>
-                          <Typography align="left" color="text.secondary">
+                        <ListItem key={skill} disablePadding>
+                          <Typography variant="body2" align="left" m={1}>
                             {skill}
                           </Typography>
                         </ListItem>
