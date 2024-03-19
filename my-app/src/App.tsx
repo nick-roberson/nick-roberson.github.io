@@ -13,6 +13,8 @@ import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 // Icons
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
@@ -36,6 +38,12 @@ import {
 import "./App.css";
 import { List, ListItem } from "@mui/material";
 
+// Image paths 
+import profileImage from "./images/profile.png";
+import placesHomePage from "./images/home_page.png";
+import placesRecipesPage from "./images/recipes_page.png";
+import placesPlacesPage from  "./images/places_page.png";
+
 // Static variables
 const githubLink = "https://github.com/nick-roberson";
 const linkedInLink = "https://www.linkedin.com/in/nicholas-roberson/";
@@ -58,6 +66,7 @@ const projects: ProjectCard[] = [
      supporting a dynamic and personal culinary and travel diary. Integrating MongoDB for storage and requiring 
      a Google Maps/Places API key, this project combines my interests in coding, food, and travel. It's a reflection 
      of my skills in web development and my passion for exploring and cooking.`,
+     [placesHomePage, placesRecipesPage, placesPlacesPage],
     ["Python", "React", "TypeScript", "FastAPI", "OpenAPI", "MongoDB"],
     "https://github.com/nick-roberson/places/blob/main/README.md",
     "https://github.com/nick-roberson/places",
@@ -69,6 +78,7 @@ const projects: ProjectCard[] = [
     MongoDB, and Jinja templating. It allows for the quick generation of service scaffolding, models, and CRUD 
     operations through YAML configurations, aiming to reduce the initial setup time for new projects. This project 
     is especially helpful for those looking to quickly stand up FastAPI applications with MongoDB integration.`,
+    [],
     ["Python", "FastAPI", "OpenAPI", "MongoDB", "Jinja2"],
     "https://github.com/nick-roberson/fastapi-gen/blob/main/README.md",
     "https://github.com/nick-roberson/fastapi-gen",
@@ -268,6 +278,29 @@ function renderProjects() {
             </Typography>
 
             <br />
+
+            {
+              project.images.length > 0 ? (
+                <Container>
+                  <ImageList
+                    variant="quilted"
+                    sx={{ width: 1000, height: 600 }} 
+                    cols={1}
+                  >
+                    {project.images.map((item) => (
+                      <ImageListItem key={item}>
+                        <img
+                          srcSet={`${item}?fit=crop&auto=format&dpr=2 2x`}
+                          src={`${item}?fit=crop&auto=format`}
+                          alt={item}
+                          loading="lazy"
+                        />
+                      </ImageListItem>
+                    ))}
+                  </ImageList>
+                </Container>
+                ) : null
+            }
             <Typography align="left" paragraph>
               Check out the project on GitHub using the links below!
             </Typography>
@@ -292,22 +325,38 @@ function App() {
     <div className="App">
       <Box m={3}>
         <Box sx={{ bgcolor: "background.paper" }}>
-          <Typography
-            component="h3"
-            variant="h3"
-            color="text.primary"
-            align="left"
-          >
-            Nick Roberson
-          </Typography>
-          <Typography
-            component="h6"
-            variant="h6"
-            color="text.secondary"
-            align="left"
-          >
-            Senior Software + Data Engineer
-          </Typography>
+
+          <Stack direction="row" spacing={2} justifyContent="left">
+            <Box
+              component="img"
+              sx={{
+                height: 90, // specifies height
+                width: 90,  // specifies width
+              }}
+              borderRadius={16}
+              src={profileImage}
+              alt="Description"
+            />
+            <Box>
+              <Typography
+                component="h3"
+                variant="h3"
+                color="text.primary"
+                align="left"
+              >
+                Nick Roberson
+              </Typography>
+              <Typography
+                component="h6"
+                variant="h6"
+                color="text.secondary"
+                align="left"
+              >
+                Senior Software + Data Engineer
+              </Typography>
+            </Box>
+          </Stack>
+
           <Stack direction="row" spacing={2} justifyContent="left">
             <Button
               startIcon={<AlternateEmailIcon />}
