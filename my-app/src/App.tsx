@@ -91,8 +91,7 @@ const description = [
   approach. Notable projects include a low-latency, high-availability tracking and automation 
   platform for indoor farming at Plenty, and cost estimation software for Kubernetes at Atomwise. 
   Furthermore, I have proven expertise in managing large-scale data warehouses, effectively meeting 
-  the diverse needs of internal teams at both organizations.`,
-  `Overall, I excel in backend service/API 
+  the diverse needs of internal teams at both organizations. Overall, I excel in backend service/API 
   development and data engineering, coupled with a strong ability to solve complex problems. My 
   commitment to fostering team collaboration has been instrumental in delivering top-notch solutions.`,
   `On the side I enjoy working on personal projects, such as 'My Places', a web app to organize and
@@ -331,7 +330,7 @@ function App() {
           </Divider>
           <br />
           {personalStatement.statement.map((paragraph) => (
-            <Typography align="left" paragraph>
+            <Typography align="left" color="text.secondary" paragraph>
               {paragraph}
             </Typography>
           ))}
